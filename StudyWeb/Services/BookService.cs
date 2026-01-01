@@ -1,69 +1,58 @@
 ﻿using StudyWeb.Contracts;
 using StudyWeb.Entities;
+using StudyWeb.Repositories;
 
 namespace StudyWeb.Services;
 
 public class BookService
 {
-    public static List<Book> library = [];
+    private BookRepository _bookRepository = new BookRepository();
     
     public List<Book> GetAll()
     {
-        return library;
+        return _bookRepository.GetAll();
     }
 
     public Book Get(int id)
     {
-        for (var i = 0; i < library.Count; i++)
+        var book = _bookRepository.Get(id);
+        if (book == null)
         {
-            if (library[i].Id == id)
-            {
-                return library[i];
-            }
+            throw new InvalidDataException("Такой книги не найдено");
         }
-
-        return null;
+        return book;
     }
     
     public Book Create(CreateRequest request)
     {
+        if (request.Title == "")
+        {
+            throw new InvalidDataException("Не указанно название");
+        }
+        
         Book book = new Book
         {
-            Id = library.Count + 1,
             Title = request.Title,
             Author = request.Author
         };
-        library.Add(book);
-        return book;
+        return _bookRepository.Create(book);
     }
 
-    public Book Update(int id, UpdateRequest request)
+    public Book? Update(int id, UpdateRequest request)
     {
-        for (var i = 0; i < library.Count; i++)
+        var book = _bookRepository.Get(id);
+        if (book == null)
         {
-            if (library[i].Id == id)
-            {
-                library[i].Title = request.Title;
-                library[i].Author = request.Author;
-                return library[i];
-            }
+            throw new InvalidDataException("Такой книги не найдено");
         }
 
-        return null;
+        book.Title = request.Title;
+        book.Author = request.Author;
+        return _bookRepository.Update(id, book);
     }
 
     public int Delete(int id)
     {
-        for (var i = 0; i < library.Count; i++)
-        {
-            if (library[i].Id == id)
-            {
-                int tmp = library[i].Id;
-                library.RemoveAt(i);
-                return tmp;
-            }
-        }
-
-        return -1;
+        return _bookRepository.Delete(id);
     }
 }

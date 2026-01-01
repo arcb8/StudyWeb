@@ -8,35 +8,35 @@ namespace StudyWeb.Controllers;
 [Route("books")]
 public class BooksController : ControllerBase
 {
-    private BookService bookService = new BookService();
+    private BookService _bookService = new();
 
     [HttpGet]
     public IActionResult GetAll()
     {
-        return Ok(bookService.GetAll());
+        return Ok(_bookService.GetAll());
     }
 
     [HttpGet("{id}")]
     public IActionResult Get(int id)
     {
-        return Ok(bookService.Get(id));
+        return Ok(_bookService.Get(id));
     }
 
     [HttpPost]
     public IActionResult Create(CreateRequest request)
     {
-        return Ok(bookService.Create(request));
+        return Ok(_bookService.Create(request));
     }
 
     [HttpDelete("{id}")]
     public IActionResult Delete(int id)
     {
-        return Ok(bookService.Delete(id));
+        return Ok(_bookService.Delete(id));
     }
 
     [HttpPut("{id}")]
     public IActionResult Update(int id, UpdateRequest request)
     {
-        return Ok(bookService.Update(id, request));
+        return Ok(_bookService.Update(id, request));
     }
 }
