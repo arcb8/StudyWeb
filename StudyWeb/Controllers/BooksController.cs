@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using StudyWeb.Contracts;
+using StudyWeb.Services;
 
 namespace StudyWeb.Controllers;
 
@@ -6,85 +8,35 @@ namespace StudyWeb.Controllers;
 [Route("books")]
 public class BooksController : ControllerBase
 {
-    public static List<Book> library = [];
-    
+    private BookService bookService = new BookService();
+
     [HttpGet]
     public IActionResult GetAll()
     {
-        return Ok(library);
+        return Ok(bookService.GetAll());
     }
 
     [HttpGet("{id}")]
     public IActionResult Get(int id)
     {
-        for (var i = 0; i < library.Count; i++)
-        {
-            if (library[i].Id == id)
-            {
-                return Ok(library[i]);
-            }
-        }
-
-        return BadRequest("Книга не найдена");
+        return Ok(bookService.Get(id));
     }
 
     [HttpPost]
     public IActionResult Create(CreateRequest request)
     {
-        Book book = new Book
-        {
-            Id = library.Count + 1,
-            Title = request.Title,
-            Author = request.Author
-        };
-        library.Add(book);
-        return Ok(book);
+        return Ok(bookService.Create(request));
     }
 
     [HttpDelete("{id}")]
     public IActionResult Delete(int id)
     {
-        for (var i = 0; i < library.Count; i++)
-        {
-            if (library[i].Id == id)
-            {
-                library.RemoveAt(i);
-            }
-        }
-        return Ok(id);
+        return Ok(bookService.Delete(id));
     }
 
     [HttpPut("{id}")]
     public IActionResult Update(int id, UpdateRequest request)
     {
-        for (var i = 0; i < library.Count; i++)
-        {
-            if (library[i].Id == id)
-            {
-                library[i].Title = request.Title;
-                library[i].Author = request.Author;
-            }
-        }
-
-        return Ok("Объект заменен");
+        return Ok(bookService.Update(id, request));
     }
-}
-
-public class Book
-{
-    public int Id { get; set; }
-    public string Title { get; set; }
-    public string Author { get; set; }
-}
-
-public class CreateRequest
-{
-    public string Title { get; set; }
-    public string Author { get; set; }
-}
-
-public class UpdateRequest
-{
-    public string Title { get; set; }
-    public string Author { get; set; }
 }
