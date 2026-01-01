@@ -8,7 +8,12 @@ namespace StudyWeb.Controllers;
 [Route("books")]
 public class BooksController : ControllerBase
 {
-    private BookService _bookService = new();
+    private IBookService _bookService;
+
+    public BooksController(IBookService bookService)
+    {
+        _bookService = bookService;
+    }
 
     [HttpGet]
     public IActionResult GetAll()

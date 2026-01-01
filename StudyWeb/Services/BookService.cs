@@ -4,9 +4,14 @@ using StudyWeb.Repositories;
 
 namespace StudyWeb.Services;
 
-public class BookService
+public class BookService : IBookService
 {
-    private IBookRepository _bookRepository = new BookRepository();
+    private IBookRepository _bookRepository;
+
+    public BookService(IBookRepository bookRepository)
+    {
+        _bookRepository = bookRepository;
+    }
     
     public List<Book> GetAll()
     {
