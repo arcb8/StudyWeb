@@ -6,7 +6,7 @@ namespace StudyWeb.Services;
 
 public class BookService
 {
-    private BookRepository _bookRepository = new BookRepository();
+    private IBookRepository _bookRepository = new BookRepository();
     
     public List<Book> GetAll()
     {

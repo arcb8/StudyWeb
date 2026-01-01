@@ -2,7 +2,7 @@
 
 namespace StudyWeb.Repositories;
 
-public class BookRepository
+public class BookRepository : IBookRepository
 {
     private static List<Book> _library = [];
     
