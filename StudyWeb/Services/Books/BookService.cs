@@ -28,7 +28,7 @@ public class BookService : IBookService
         return book;
     }
     
-    public Book Create(CreateRequest request)
+    public Book Create(CreateBookRequest request)
     {
         if (request.Title == "")
         {
@@ -43,7 +43,7 @@ public class BookService : IBookService
         return _bookRepository.Create(book);
     }
 
-    public Book? Update(int id, UpdateRequest request)
+    public Book? Update(int id, UpdateBookRequest request)
     {
         var book = _bookRepository.Get(id);
         if (book == null)

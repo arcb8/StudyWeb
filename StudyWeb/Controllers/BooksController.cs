@@ -28,7 +28,7 @@ public class BooksController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult Create(CreateRequest request)
+    public IActionResult Create(CreateBookRequest request)
     {
         return Ok(_bookService.Create(request));
     }
@@ -40,7 +40,7 @@ public class BooksController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public IActionResult Update(int id, UpdateRequest request)
+    public IActionResult Update(int id, UpdateBookRequest request)
     {
         return Ok(_bookService.Update(id, request));
     }

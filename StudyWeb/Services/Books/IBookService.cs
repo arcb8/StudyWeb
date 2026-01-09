@@ -7,7 +7,7 @@ public interface IBookService
 {
     public List<Book> GetAll();
     public Book Get(int id);
-    public Book Create(CreateRequest request);
-    public Book? Update(int id, UpdateRequest request);
+    public Book Create(CreateBookRequest request);
+    public Book? Update(int id, UpdateBookRequest request);
     public int Delete(int id);
 }
