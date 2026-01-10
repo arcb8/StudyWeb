@@ -17,18 +17,9 @@ public class BookDbRepository : IBookRepository
         return books;
     }
 
-    public Book Get(int id)
-    {
-        var books = GetAll();
-        foreach (var book in books)
-        {
-            if (book.Id == id)
-            {
-                return book;
-            }
-        }
-
-        return null;
+    public Book? Get(int id)
+    { 
+        return _dbContext.Books.FirstOrDefault(book => book.Id == id); // LINQ
     }
 
     public Book Create(Book book)
