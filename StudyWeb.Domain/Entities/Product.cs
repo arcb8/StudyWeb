@@ -1,4 +1,4 @@
-﻿namespace StudyWeb.Entities;
+﻿namespace StudyWeb.Domain.Entities;
 
 public class Product
 {

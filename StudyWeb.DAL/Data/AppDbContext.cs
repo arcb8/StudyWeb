@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using StudyWeb.Entities;
+using StudyWeb.Domain.Entities;
 
 namespace StudyWeb.Data;
 

@@ -1,5 +1,5 @@
 ﻿using StudyWeb.Contracts.Products;
-using StudyWeb.Entities;
+using StudyWeb.Domain.Entities;
 using StudyWeb.Repositories.Products;
 
 namespace StudyWeb.Services.Products;
