@@ -1,5 +1,5 @@
 ﻿using StudyWeb.Data;
-using StudyWeb.Entities;
+using StudyWeb.Domain.Entities;
 
 namespace StudyWeb.Repositories;
 

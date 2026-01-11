@@ -1,5 +1,5 @@
 ﻿using System.Text.Json;
-using StudyWeb.Entities;
+using StudyWeb.Domain.Entities;
 
 namespace StudyWeb.Repositories;
 

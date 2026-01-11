@@ -1,4 +1,5 @@
-﻿using StudyWeb.Entities;
+﻿using StudyWeb.Domain.Entities;
+
 
 namespace StudyWeb.Repositories.Products;
 
