@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\StudyWeb.DAL\StudyWeb.DAL.csproj" />
       <ProjectReference Include="..\StudyWeb.Domain\StudyWeb.Domain.csproj" />
     </ItemGroup>
 
