@@ -17,7 +17,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\StudyWeb.BLL\StudyWeb.BLL.csproj" />
+      <ProjectReference Include="..\StudyWeb.Application\StudyWeb.Application.csproj" />
+      <ProjectReference Include="..\StudyWeb.Infrastructure\StudyWeb.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>
